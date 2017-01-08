@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c668aaa1e9f5d5c42b89bb41452333cf
+timeCreated: 1483891095
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: on meth
+  fontNames:
+  - on meth
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

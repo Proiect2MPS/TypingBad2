@@ -8,6 +8,12 @@ public class inputScript : MonoBehaviour {
 	public TextAsset inputFile;
     public TextAsset inputFile2;
     public TextAsset inputFile3;
+    public TextAsset inputFile4;
+    public Text username;
+    public Text highscoreUI;
+
+    private int highscore = 0;
+
     public GameObject prefab;
 	public InputField inputField;
     public Text score;
@@ -30,6 +36,10 @@ public class inputScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+        highscore = PlayerPrefs.GetInt("score");
+        highscoreUI.text = "Highscore: "+highscore.ToString();
+
+        username.text = PlayerPrefs.GetString("user");
         gameoverbutton.gameObject.SetActive(false);
 
         levelText.text = "Level: 1";
@@ -46,6 +56,8 @@ public class inputScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
 
         countdownText.text = ("Countdown: " + timeLeft);
         if (timeLeft <= 0)
@@ -109,7 +121,7 @@ public class inputScript : MonoBehaviour {
                     levelText.text = "Level: 4";
                     level = 4;
                     incsc = 50;
-                    words = inputFile3.ToString().Split('\n');
+                    words = inputFile4.ToString().Split('\n');
 
                 }
 
@@ -144,7 +156,8 @@ public class inputScript : MonoBehaviour {
                 }
             }
         }
-	}
+        highscoreUI.text = "Highscore: " + highscore.ToString();
+    }
 
     IEnumerator LoseTime()
     {
@@ -202,6 +215,12 @@ public class inputScript : MonoBehaviour {
     public void gameoverfunction(string level) {
 
         SceneManager.LoadScene(level);
-       // System.IO.File.AppendAllText("C:/Users/moglan/Desktop/tg/Assets/highscore.txt", points+"\r\n");
+        if (points > highscore) {
+            highscore = points;
+        }
+        PlayerPrefs.SetInt("score", highscore);
+        PlayerPrefs.SetString("best", username.text);
+
+        // System.IO.File.AppendAllText("C:/Users/moglan/Desktop/tg/Assets/highscore.txt", points+"\r\n");
     }
 }

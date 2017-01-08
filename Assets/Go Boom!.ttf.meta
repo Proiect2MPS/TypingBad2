@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: cfea6df56c01ddb4ba73a33877bc5b8d
+timeCreated: 1483891095
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Go Boom!
+  fontNames:
+  - Go Boom!
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

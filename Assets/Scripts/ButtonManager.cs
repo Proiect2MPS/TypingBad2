@@ -31,7 +31,7 @@ public class ButtonManager : MonoBehaviour {
 
 
         }
-        hightext.text = highfile.ToString();
+        hightext.text = PlayerPrefs.GetString("best") + " " +  PlayerPrefs.GetInt("score");
     }
 
     public void Pause() {
@@ -73,7 +73,7 @@ public class ButtonManager : MonoBehaviour {
 
         if (highimg.gameObject.activeInHierarchy == false)
         {
-            hightext.text = highfile.ToString();
+            hightext.text = PlayerPrefs.GetString("best") + " " + PlayerPrefs.GetInt("score");
             highimg.gameObject.SetActive(true);
 
         }
@@ -99,6 +99,11 @@ public class ButtonManager : MonoBehaviour {
             highimg.gameObject.SetActive(false);
 
         }
+    }
+
+    public void resethighscore() {
+        PlayerPrefs.SetInt("score", 0);
+
     }
 
 }
