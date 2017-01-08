@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class inputScript : MonoBehaviour {
 	public TextAsset inputFile;
-	public GameObject prefab;
+    public TextAsset inputFile2;
+    public TextAsset inputFile3;
+    public GameObject prefab;
 	public InputField inputField;
     public Text score;
 
+    private int level = 1;
+    private int incsc = 5;
 	private string[] words;
 	private int i = -1;
 	private GameObject[] wordsToPrint;
 
-
-    public int timeLeft = 5;
+    public Text levelText;
+    public Button gameoverbutton;
+    public int timeLeft = 10;
     public Text countdownText;
     public Text livesleft;
     public Text gameover;
@@ -23,13 +29,18 @@ public class inputScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        gameoverbutton.gameObject.SetActive(false);
+
+        levelText.text = "Level: 1";
         livesleft.text = "Lives: 3";
         // afisez primul cuvant 
+
         char[] delims = {'\n'};
 		words = inputFile.ToString ().Split(delims);
         i = Random.Range(0, words.Length);
         inputField.GetComponent<InputField>().text = "";
-        printWords(i);
+        printWords(i,1);
         StartCoroutine("LoseTime");
     }
 	
@@ -47,7 +58,7 @@ public class inputScript : MonoBehaviour {
             i = Random.Range(0, words.Length);
             inputField.GetComponent<InputField>().text = "";
             // se printeaza noul cuvant
-            printWords(i);
+            printWords(i,level);
             Debug.Log("vieti:"+lives);
 
             if (lives <= -12) {
@@ -61,7 +72,11 @@ public class inputScript : MonoBehaviour {
                 for (int i = 0; i < wordsToPrint.Length; i++) Destroy(wordsToPrint[i]); //sterg cuvintele rosii.
                 gameover.text = "GAME OVER";
                 Debug.Log("scor final: " + points);
-                
+                gameoverbutton.gameObject.SetActive(true);
+                // System.IO.File.AppendAllText("C:/Users/moglan/Desktop/tg/Assets/highscore.txt", "\r\n"+points);
+
+
+
             }
         }
 
@@ -69,14 +84,44 @@ public class inputScript : MonoBehaviour {
             // daca s-a gasit potrivire intre ce este in input text si cuvantul afisat se genereaza un nou cuvant
             if (inputField.GetComponent<InputField>().text.Equals(words[i].TrimEnd(new char[] { '\r', '\n' })))
             {
-                points = points + 5;
+                points = points + incsc;
                 score.text = "Score: " + points.ToString();
+
+                if (points >= 50) {
+                    levelText.text = "Level: 2";
+                    level = 2;
+                    incsc = 10;
+                    words = inputFile2.ToString().Split('\n');
+                   
+
+                }
+                if (points >= 150)
+                {
+                    levelText.text = "Level: 3";
+                    level = 3;
+                    incsc = 20;
+                    words = inputFile3.ToString().Split('\n');
+
+                }
+
+                if (points >= 500)
+                {
+                    levelText.text = "Level: 4";
+                    level = 4;
+                    incsc = 50;
+                    words = inputFile3.ToString().Split('\n');
+
+                }
+
+
+
+
 
                 // TODO DA PUNCTE
                 i = Random.Range(0, words.Length);
                 inputField.GetComponent<InputField>().text = "";
                 // se printeaza noul cuvant
-                printWords(i);
+                printWords(i,level);
                 timeLeft = 10;
             }
             else
@@ -84,8 +129,18 @@ public class inputScript : MonoBehaviour {
                 // aplic un efect pentru fiecare cuvant
                 for (int i = 0; i < wordsToPrint.Length; i++)
                 {
-                    //aici am aplicat un efect
-                    wordsToPrint[i].transform.Rotate(new Vector3(1, 0, 0) * Time.deltaTime * 100 * (i + 1));
+                    if (level == 1) {
+                        wordsToPrint[i].transform.Rotate(new Vector3(0, 0, 1) * Time.deltaTime * 100 * (i + 1));
+                    }
+                    if(level == 2) { 
+                        wordsToPrint[i].transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * 100 * (i + 1));
+                    }
+                    if (level == 3) {
+                        wordsToPrint[i].transform.Rotate(new Vector3(1, 0, 1) * Time.deltaTime * 100 * (i + 1));
+                    }
+                    if (level == 4) {
+                        wordsToPrint[i].transform.Rotate(new Vector3(1, 1, 1) * Time.deltaTime * 300 * (i + 1));
+                    }
                 }
             }
         }
@@ -104,7 +159,7 @@ public class inputScript : MonoBehaviour {
             }
         }
     }
-    void printWords(int index)
+    void printWords(int index, int level)
 	{
 		// daca avem deja afisat un cuvant atunci il stergem
 		if (wordsToPrint != null) {
@@ -124,7 +179,29 @@ public class inputScript : MonoBehaviour {
 			g.transform.SetParent (transform);
 			g.GetComponent<LayoutElement> ().minWidth = 20 * str [i].Length;
 			wordsToPrint [i] = g;
-			wordsToPrint [i].GetComponent<Text> ().text = str[i];
+            if (level == 2)
+            {
+                wordsToPrint[i].GetComponent<Text>().color = Color.magenta;
+
+            }
+            if (level == 3)
+            {
+                wordsToPrint[i].GetComponent<Text>().color = Color.yellow;
+
+            }
+            if (level == 4)
+            {
+                wordsToPrint[i].GetComponent<Text>().color = Color.red;
+
+            }
+
+            wordsToPrint [i].GetComponent<Text> ().text = str[i];
 		}
 	}
+
+    public void gameoverfunction(string level) {
+
+        SceneManager.LoadScene(level);
+       // System.IO.File.AppendAllText("C:/Users/moglan/Desktop/tg/Assets/highscore.txt", points+"\r\n");
+    }
 }
