@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 12f46f5da0b7c624a8c05e7ffe74e50f
+timeCreated: 1483530093
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Heart Breaking Bad
+  fontNames:
+  - Heart Breaking Bad
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
