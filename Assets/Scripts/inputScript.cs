@@ -12,32 +12,96 @@ public class inputScript : MonoBehaviour {
 	private int i = -1;
 	private GameObject[] wordsToPrint;
 
-	// Use this for initialization
-	void Start () {
-		char[] delims = {'\n'};
+
+    public int timeLeft = 5;
+    public Text countdownText;
+    public Text livesleft;
+    public Text gameover;
+    private int lives = 3;
+
+    // Use this for initialization
+    void Start () {
+        livesleft.text = "Lives: 3";
+        // afisez primul cuvant 
+        char[] delims = {'\n'};
 		words = inputFile.ToString ().Split(delims);
-	}
+        i = Random.Range(0, words.Length);
+        inputField.GetComponent<InputField>().text = "";
+        printWords(i);
+        StartCoroutine("LoseTime");
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if (i < 0 || inputField.GetComponent<InputField> ().text.Equals (words [i].TrimEnd (new char[] { '\r', '\n' }))) {
-			// daca nu am afisat un cuvant sau s-a gasit potrivire intre ce este in input text si cuvantul afisat se
-			// genereaza un nou cuvant
-			i = Random.Range (0, words.Length);
-			inputField.GetComponent<InputField> ().text = "";
-			// se printeaza noul cuvant
-			printWords (i);
-		} else {
-			// aplic un efect pentru fiecare cuvant
-			for (int i = 0; i < wordsToPrint.Length; i++) {
-				//aici am aplicat un efect
-				wordsToPrint [i].transform.Rotate(new Vector3(1, 0, 0) * Time.deltaTime * 100 * (i + 1));
-			}	
-		}
+
+        countdownText.text = ("Countdown: " + timeLeft);
+        if (timeLeft <= 0)
+        {if (lives < 0) livesleft.text = "Lives: 2";
+        if (lives < -5) livesleft.text = "Lives: 1";
+
+            countdownText.text = "Times Up!";
+            lives--;
+           
+
+
+            i = Random.Range(0, words.Length);
+            inputField.GetComponent<InputField>().text = "";
+            // se printeaza noul cuvant
+            printWords(i);
+            Debug.Log("vieti:"+lives);
+            if (lives <= -12) {
+                livesleft.text = "Lives: 0";
+                //Time.timeScale = 0;
+                Debug.Log("GAME OVER");
+                // TODO GAME OVER.
+                StopCoroutine("LoseTime");
+                for (int i = 0; i < wordsToPrint.Length; i++) Destroy(wordsToPrint[i]); //sterg cuvintele rosii.
+                gameover.text = "GAME OVER"; 
+                
+            }
+        }
+
+        else {
+
+            // daca s-a gasit potrivire intre ce este in input text si cuvantul afisat se genereaza un nou cuvant
+            if (inputField.GetComponent<InputField>().text.Equals(words[i].TrimEnd(new char[] { '\r', '\n' })))
+            {
+                // TODO DA PUNCTE
+                i = Random.Range(0, words.Length);
+                inputField.GetComponent<InputField>().text = "";
+                // se printeaza noul cuvant
+                printWords(i);
+                timeLeft = 10;
+            }
+            else
+            {
+                // aplic un efect pentru fiecare cuvant
+                for (int i = 0; i < wordsToPrint.Length; i++)
+                {
+                    //aici am aplicat un efect
+                    wordsToPrint[i].transform.Rotate(new Vector3(1, 0, 0) * Time.deltaTime * 100 * (i + 1));
+                }
+            }
+
+        }
+
+        
 	}
 
-	void printWords(int index)
+    IEnumerator LoseTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            timeLeft--;
+            if (timeLeft == 0)
+            {
+                yield return new WaitForSeconds(0.1f);
+                timeLeft = 10;
+            }
+        }
+    }
+    void printWords(int index)
 	{
 		// daca avem deja afisat un cuvant atunci il stergem
 		if (wordsToPrint != null) {
