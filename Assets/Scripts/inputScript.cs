@@ -7,6 +7,7 @@ public class inputScript : MonoBehaviour {
 	public TextAsset inputFile;
 	public GameObject prefab;
 	public InputField inputField;
+    public Text score;
 
 	private string[] words;
 	private int i = -1;
@@ -18,6 +19,7 @@ public class inputScript : MonoBehaviour {
     public Text livesleft;
     public Text gameover;
     private int lives = 3;
+    private int points = 0;
 
     // Use this for initialization
     void Start () {
@@ -41,31 +43,35 @@ public class inputScript : MonoBehaviour {
 
             countdownText.text = "Times Up!";
             lives--;
-           
-
 
             i = Random.Range(0, words.Length);
             inputField.GetComponent<InputField>().text = "";
             // se printeaza noul cuvant
             printWords(i);
             Debug.Log("vieti:"+lives);
+
             if (lives <= -12) {
                 livesleft.text = "Lives: 0";
+
+            
                 //Time.timeScale = 0;
                 Debug.Log("GAME OVER");
                 // TODO GAME OVER.
                 StopCoroutine("LoseTime");
                 for (int i = 0; i < wordsToPrint.Length; i++) Destroy(wordsToPrint[i]); //sterg cuvintele rosii.
-                gameover.text = "GAME OVER"; 
+                gameover.text = "GAME OVER";
+                Debug.Log("scor final: " + points);
                 
             }
         }
 
         else {
-
             // daca s-a gasit potrivire intre ce este in input text si cuvantul afisat se genereaza un nou cuvant
             if (inputField.GetComponent<InputField>().text.Equals(words[i].TrimEnd(new char[] { '\r', '\n' })))
             {
+                points = points + 5;
+                score.text = "Score: " + points.ToString();
+
                 // TODO DA PUNCTE
                 i = Random.Range(0, words.Length);
                 inputField.GetComponent<InputField>().text = "";
@@ -82,10 +88,7 @@ public class inputScript : MonoBehaviour {
                     wordsToPrint[i].transform.Rotate(new Vector3(1, 0, 0) * Time.deltaTime * 100 * (i + 1));
                 }
             }
-
         }
-
-        
 	}
 
     IEnumerator LoseTime()
