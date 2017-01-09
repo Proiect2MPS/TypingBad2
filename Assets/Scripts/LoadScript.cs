@@ -7,7 +7,6 @@ public class LoadScript : MonoBehaviour {
 
     public void NewGame(string level)
     {
-
         SceneManager.LoadScene(level);
     }
 }

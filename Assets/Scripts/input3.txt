@@ -1,8 +1,8 @@
 adunare
+abscisa OX
 algoritm
-abscisa
 axa de coordonate 
-baza
+baza 2
 binom
 bisectoare
 centru de greutate
@@ -13,10 +13,10 @@ coordonate carteziene
 demonstratie
 divizibilitate
 echivalenta
-ecuatie
+ecuatie matematica
 egalitate
 figuri echivalente
-fractie
+fractie ireductibila
 geometrie
 incluziune
 infinit
@@ -26,7 +26,7 @@ medie aritmetica
 origine
 ortocentru
 proportie
-radical
+radical dublu
 radacina
 rationalizare
 segmente congruente

@@ -25,7 +25,7 @@ fonta
 neon
 argon
 xenon
-benzen 
+benzen
 toluen
 arene
 cloroform

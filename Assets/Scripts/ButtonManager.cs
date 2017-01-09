@@ -11,99 +11,66 @@ public class ButtonManager : MonoBehaviour {
     public AudioSource volumeAudio;
     public Image instimg;
     public Image highimg;
-    public TextAsset highfile;
     public Text hightext;
 
     public void NewGame(string level) {
-
         SceneManager.LoadScene(level);
     }
 
     public void ExitGame() {
-
         Application.Quit();
     }
 
-    private void Update()
-    {
+    private void Update(){
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Pause();
-
-
         }
         hightext.text = PlayerPrefs.GetString("best") + " " +  PlayerPrefs.GetInt("score");
     }
 
     public void Pause() {
 
-        if (pause.gameObject.activeInHierarchy == false)
-        {
+        if (pause.gameObject.activeInHierarchy == false)  {
             pause.gameObject.SetActive(true);
             Time.timeScale = 0;
         }
-        else
-        {
+        else {
             pause.gameObject.SetActive(false);
             Time.timeScale = 1;
         }
     }
 
     public void VolumeControl(float volumecontrol) {
-
-
         volumeAudio.volume = volumeSlider.value;
     }
 
     public void instructions() {
 
-
-
-        if (instimg.gameObject.activeInHierarchy == false)
-        {
-            instimg.gameObject.SetActive(true);
-            
+        if (instimg.gameObject.activeInHierarchy == false) {
+            instimg.gameObject.SetActive(true);    
         }
-        
-
-
-
     }
 
     public void highscore() {
-
-        if (highimg.gameObject.activeInHierarchy == false)
-        {
+        if (highimg.gameObject.activeInHierarchy == false) {
             hightext.text = PlayerPrefs.GetString("best") + " " + PlayerPrefs.GetInt("score");
             highimg.gameObject.SetActive(true);
-
         }
     }
 
-
-    public void closeinst()
-    {
-
-        if (instimg.gameObject.activeInHierarchy == true)
-        {
+    public void closeinst(){if (instimg.gameObject.activeInHierarchy == true){
             instimg.gameObject.SetActive(false);
-
         }
-        
-
     }
 
     public void closehigh() {
 
-        if (highimg.gameObject.activeInHierarchy == true)
-        {
+        if (highimg.gameObject.activeInHierarchy == true) {
             highimg.gameObject.SetActive(false);
-
         }
     }
 
     public void resethighscore() {
         PlayerPrefs.SetInt("score", 0);
-
     }
-
 }
