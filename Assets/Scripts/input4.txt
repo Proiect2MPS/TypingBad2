@@ -1,8 +1,70 @@
-salam
-guta
-bomba
-sistem
-percutie
-vijelie
-forta
-bine
+program
+executabil
+instructiune
+obiecte
+atribute
+memorie
+polimorfism
+mostenire
+vector
+matrice
+pointer
+sintaxa
+bucla infinita
+interfata
+clasa abstracta
+client-server
+lista
+stiva
+coada
+genericitate
+algoritm
+segmentation fault
+javascript
+python
+unity
+graf orientat
+assembly
+cache
+microprocesor
+arhitectura
+structuri de date
+protocol de comunicatie
+masina turing
+calculatoare numerice
+banda de asamblare
+dezvoltare
+testare
+integrare
+procesare
+interconectare
+sisteme informatice
+kernel
+masina virtuala
+configurari de retea
+adrese ip
+programare dinamica
+sortare topologica
+arbori binari
+memorie virtuala
+gestiunea memoriei
+atacuri de retea
+virtualizare
+adresa de broadcast
+subnetare
+sistem de operare
+sistem de calcul
+arbori de acoperire
+optimizare
+programare web
+baze de date
+tabele
+constrangeri
+metode de interpolare
+sincronizare
+format binar
+securitatea datelor
+alocare memorie
+aplicatie
+domeniu
+puncte de acces

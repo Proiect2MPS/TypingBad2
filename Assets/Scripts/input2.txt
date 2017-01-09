@@ -1,8 +1,40 @@
-sa moara
-sa faca
-daca nu e hau
-macanache
-checheraut
-hau hau
-aia zic
-ejnebun
+atom
+acceleratie
+camp vectorial
+circuit
+conductivitate
+constanta
+criptare cuantica
+impedanta
+tranzistor
+oscilatii
+presiune
+rezistenta
+dioda
+densitate
+difractie electroni
+reflexie
+refractie
+energie cinetica
+electromagnetism
+electricitate
+experiment
+greutate
+fuziune nucleara
+intensitate luminoasa
+inertie
+inductanta
+impuls
+kilogram
+luminozitate
+lungime de unda
+magnetism
+numar atomic
+particula
+radioactivitate
+randament
+tensiune electrica
+viteza luminii in vid
+transformare termodinamica
+sistem de referinta
+frecventa

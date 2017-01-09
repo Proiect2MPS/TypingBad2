@@ -1,7 +1,40 @@
-ana
-are
-mere
-multe
-dulci
-si
-coapte
+solvent
+solvat
+metale
+nemetale
+solutie
+dizolvare
+catalizator
+concentratie procentuala
+molaritate
+lichid
+plasma
+densitate
+masa moleculara
+mol de substanta
+carbon
+oxigen
+hidrogen
+sodiu
+potasiu
+calciu
+magneziu
+arama
+bronz
+fonta
+neon
+argon
+xenon
+benzen 
+toluen
+arene
+cloroform
+formol
+etanol
+acetona
+glucoza
+polistiren
+zaharoza
+amoniac
+acid clorhidric
+gaz metan

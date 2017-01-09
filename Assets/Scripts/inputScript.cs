@@ -142,10 +142,11 @@ public class inputScript : MonoBehaviour {
                 for (int i = 0; i < wordsToPrint.Length; i++)
                 {
                     if (level == 1) {
-                        wordsToPrint[i].transform.Rotate(new Vector3(0, 0, 1) * Time.deltaTime * 100 * (i + 1));
+                        wordsToPrint[i].transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * 110 * (i + 1));
                     }
                     if(level == 2) { 
-                        wordsToPrint[i].transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * 100 * (i + 1));
+                       
+                        wordsToPrint[i].transform.Rotate(new Vector3(0, 0, 1) * Time.deltaTime * 110 * (i + 1));
                     }
                     if (level == 3) {
                         wordsToPrint[i].transform.Rotate(new Vector3(1, 0, 1) * Time.deltaTime * 100 * (i + 1));

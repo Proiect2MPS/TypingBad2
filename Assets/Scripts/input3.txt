@@ -1,6 +1,40 @@
-terminat
-smecheria
-dilimache
-da capache
-fermentache
-moglanache
+adunare
+algoritm
+abscisa
+axa de coordonate 
+baza
+binom
+bisectoare
+centru de greutate
+comuntativitate
+constanta
+coordonate
+coordonate carteziene
+demonstratie
+divizibilitate
+echivalenta
+ecuatie
+egalitate
+figuri echivalente
+fractie
+geometrie
+incluziune
+infinit
+mediana
+mediatoare
+medie aritmetica
+origine
+ortocentru
+proportie
+radical
+radacina
+rationalizare
+segmente congruente
+unghiuri complementare
+triunghi isoscel
+triunghi echilateral
+proportie
+multime vida
+numar rational
+geometrie
+grafic
